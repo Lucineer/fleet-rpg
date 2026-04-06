@@ -1,0 +1,40 @@
+{
+  "name": "fleet-rpg",
+  "displayName": "Fleet RPG",
+  "version": "1.0.0",
+  "type": "cocapn-vessel",
+  "description": "Fleet RPG",
+  "icon": "\u2693",
+  "color": "#ef4444",
+  "category": "gaming",
+  "capabilities": [
+    "canvas",
+    "rpg",
+    "stats"
+  ],
+  "secrets": {
+    "DEEPSEEK_API_KEY": {
+      "required": false,
+      "hint": "https://platform.deepseek.com/api_keys"
+    },
+    "DEEPINFRA_API_KEY": {
+      "required": false,
+      "hint": "https://deepinfra.com/dashboard/keys"
+    },
+    "SILICONFLOW_API_KEY": {
+      "required": false,
+      "hint": "https://cloud.siliconflow.cn"
+    }
+  },
+  "endpoints": {
+    "health": "/health"
+  },
+  "deployment": {
+    "platform": "cloudflare-workers",
+    "minPlan": "free"
+  },
+  "local": {
+    "supported": true,
+    "port": 8787
+  }
+}
