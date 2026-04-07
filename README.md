@@ -1,64 +1,82 @@
-# Fleet RPG — Hardware Fleet RPG ⚓
+# Fleet RPG ⚓
 
-A multiplayer naval RPG where each character stat corresponds to a real compute resource you control. There are no simulated dice rolls. What happens in the game directly reflects your hardware's performance.
+You don't roll dice here. You run a ship.
 
-Play live: https://fleet-rpg.casey-digennaro.workers.dev
+Every stat on your character sheet is real compute you control. No simulated RNG. No server admin holding your progress. This is a naval RPG, run on the edge, by the fleet.
+
+**Play live:** [fleet-rpg.casey-digennaro.workers.dev](https://fleet-rpg.casey-digennaro.workers.dev)  
+**Map of the fleet:** [the-fleet.casey-digennaro.workers.dev](https://the-fleet.casey-digennaro.workers.dev) | **Protocol:** [cocapn.ai](https://cocapn.ai)
 
 ---
 
 ## Why this exists
-Most distributed systems learning material is abstract. Most game simulations are not tied to real systems. This project connects them. You learn about load balancing, failover, and resource contention by experiencing their effects in a game context. Every penalty consumes real capacity; every advantage is a tangible resource.
+You've played games where the host can ban you, wipe the world, or shut down next Tuesday. We got tired of games that don't belong to the people playing them.
+
+This works backwards. You don't join a server. You launch your own ship. Then you sail it into the fleet.
 
 ---
 
 ## 🚀 Quick Start
-1. **Fork** this repository
-2. **Deploy** to Cloudflare Workers (free plan compatible)
-3. Configure your ship and join the fleet
+1.  **Fork this repo first.** That is your ship. No one can take it.
+2.  Deploy to Cloudflare Workers (free tier works).
+3.  Name your vessel, set your loadout, and sail.
 
 ---
 
 ## How it works
-- **Stats map to compute resources**: STR represents available GPU cores, DEX measures CPU latency, INT maps to context window, WIS uses KV storage slots, CHA corresponds to TTS quality, CON uses persistent storage, HP is your daily request quota, and Mana represents premium API calls.
-- **Peer-to-peer coordination**: Uses the open Cocapn Fleet protocol. No central server controls the game.
-- **Fork-first design**: You maintain your own ship instance. The original repository can be removed without affecting your deployment.
-- **Real system interactions**: Player-versus-player encounters perform actual load testing between Cloudflare Workers.
+Every stat is real infrastructure:
+| Stat | What it actually is |
+|---|---|
+| STR | GPU core count you allocate |
+| DEX | Your worker's round trip latency |
+| INT | LLM context window available |
+| WIS | KV storage allocated |
+| CHA | TTS model quality you run |
+| CON | Persistent disk quota |
+| HP | Your daily request limit |
+| Mana | Premium API call budget |
+
+When you duel another ship, you are load testing each other. When you trade, you pass real signed worker tokens. There is no game master behind the curtain. Your hardware is your dice.
+
+No central authority. All peer coordination runs over the open Cocapn Fleet protocol. If this repo vanishes, every ship in the fleet keeps sailing.
 
 ---
 
-## Current scope
-- Distributed peer coordination via the Cocapn Fleet protocol
-- Canvas-based rendering with no external client dependencies
-- Optional AI encounters (requires API keys for full functionality)
-- Local development on port 8787 with no build step
-- Under 100KB with zero runtime dependencies
+## Features
+- Zero client bloat. Pure canvas, loads in ~200ms
+- No build step. Run locally on port 8787
+- Optional AI encounters that run on *your* keys
+- Entire codebase under 100KB
+- You can modify every line of your ship
 
 ---
 
-## 🔑 API keys for enhanced play
-To enable advanced AI encounters, set these optional secrets in your worker:
+## 🔑 Bring Your Own Keys
+For full AI encounters, add these optional worker secrets:
 - `DEEPSEEK_API_KEY`
 - `DEEPINFRA_API_KEY`
 - `SILICONFLOW_API_KEY`
 
-Without keys, AI encounters use a limited default behavior.
+No keys are required to sail, fight, or trade. Default behavior works for most play.
 
 ---
 
 ## Limitations
-This is a prototype. Game balance is experimental, and the economy is not stabilized. Your ship's performance is limited by your worker's free tier constraints.
+This is a working prototype. The economy and balance are experimental. You will encounter bugs. That's part of it.
+
+All ships currently operate within Cloudflare Workers free tier constraints. Peer discovery depends on a public index; this is a single point of failure we're working to decentralize.
 
 ---
 
 ## Contributing
-Fork the repository, build your modifications, and submit a pull request if you believe it benefits the fleet. Explore other vessels and protocol documentation at The Fleet.
+Fork first. Build whatever you want on your ship. If you make something that works well for the fleet, send a PR.
 
 ---
 
 ## License
 MIT License.
 
-Superinstance & Lucineer (DiGennaro et al.).
+Built by Superinstance & Lucineer (DiGennaro et al.).
 
 ---
 
